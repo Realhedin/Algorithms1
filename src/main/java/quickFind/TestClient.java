@@ -16,9 +16,21 @@ public class TestClient {
         qf.union(0,2);
         System.out.println(qf.connected(0,2));
         for (int i : qf.getId()) {
-            System.out.println(i);
+            System.out.print(i);
         }
 
+        System.out.println();
+
+        //another variant of implementation
+        QuickUnionUF unionUF = new QuickUnionUF(9);
+        System.out.println(unionUF.connected(0,2));
+        unionUF.union(0,1);
+        System.out.println(unionUF.connected(0,2));
+        unionUF.union(0,2);
+        System.out.println(unionUF.connected(0,2));
+        for (int i : unionUF.getId()) {
+            System.out.print(i);
+        }
 
     }
 }
