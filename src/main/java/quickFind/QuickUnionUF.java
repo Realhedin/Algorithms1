@@ -28,6 +28,7 @@ public class QuickUnionUF {
      */
     private int root(int i) {
         while (i != id[i]) {
+            id[i] = id[id[i]];  //impr2 to flat the tree(make every other node in path point to it's grandparent)
             i = id[i];
         }
         return i;
