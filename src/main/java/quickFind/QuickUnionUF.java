@@ -9,12 +9,15 @@ package quickFind;
  */
 public class QuickUnionUF {
 
-    private int[] id;
+    private int[] id;    //array of elements.
+    private int[] sz;    //array of number of objects in the tree rooted at i.
 
     public QuickUnionUF(int N) {
         id = new int[N];
+        sz = new int[N];
         for (int i = 0; i < id.length; i++) {
             id[i] = i;
+            sz[i] = i;
         }
     }
 
@@ -48,7 +51,17 @@ public class QuickUnionUF {
     public void union(int p, int q) {
         int i = root(p);
         int j = root(q);
-        id[i] = j;
+        if (i == j) {
+            return;
+        }
+        //link root of smaller tree to root of larger tree
+        if (sz[i] < sz[j]) {
+            id[i] = j;
+            sz[j] += sz[i];
+        } else {
+            id[j] = i;
+            sz[i] += sz[j];
+        }
     }
 
     /**
