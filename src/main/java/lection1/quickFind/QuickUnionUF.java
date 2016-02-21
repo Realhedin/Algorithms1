@@ -1,4 +1,4 @@
-package quickFind;
+package lection1.quickFind;
 
 /**
  * new approach where elements in array

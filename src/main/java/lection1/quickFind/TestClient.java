@@ -1,4 +1,4 @@
-package quickFind;
+package lection1.quickFind;
 
 /**
  * Test class to test algorithms.

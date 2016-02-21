@@ -1,7 +1,7 @@
-package quickFind;
+package lection1.quickFind;
 
 /**
- * Common implementation of quickFind
+ * Common implementation of lection1.quickFind
  * Created by dkorolev on 2/7/2016.
  */
 public class QuickFindUF {
