@@ -24,7 +24,11 @@ public class SimpleArrayImpl<Item> implements StackOfGenericItems<Item> {
 
     @Override
     public Item pop() {
-        return a[--n];
+//        return a[--n];
+        Item item = a[--n]; //better approach to
+        a[n] = null;        //allow garbage collector
+        return item;        //to reclaim memory.
+
     }
 
     @Override
