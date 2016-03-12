@@ -1,4 +1,4 @@
-package lection2.stacks;
+package lection2.stacks.interfaces;
 
 /**
  * General interface for a linked list.

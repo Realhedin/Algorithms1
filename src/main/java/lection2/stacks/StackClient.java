@@ -1,5 +1,8 @@
 package lection2.stacks;
 
+import lection2.stacks.impl.SimpleArrayImpl;
+import lection2.stacks.interfaces.StackOfGenericItems;
+
 /**
  * Test client to check stack implementations.
  *
@@ -8,7 +11,10 @@ package lection2.stacks;
 public class StackClient {
 
     public static void main(String[] args) {
-        StackOfGenericItems<String> stack = new LinkedListStackOfGenericItemsImpl<>();
+//        StackOfGenericItems<String> stack = new LinkedListStackImpl<>();
+
+        String[] strA = new String[3];
+        StackOfGenericItems<String> stack = new SimpleArrayImpl<>(strA);
 
         for (String arg : args) {
             if (arg.equals("-")) {
