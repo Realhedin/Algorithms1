@@ -1,4 +1,6 @@
-package lection2.stacks;
+package lection2.stacks.impl;
+
+import lection2.stacks.interfaces.StackOfGenericItems;
 
 import java.util.NoSuchElementException;
 
@@ -7,7 +9,7 @@ import java.util.NoSuchElementException;
  *
  * Created by dkorolev on 3/12/2016.
  */
-public class LinkedListStackOfGenericItemsImpl<Item> implements StackOfGenericItems<Item> {
+public class LinkedListStackImpl<Item> implements StackOfGenericItems<Item> {
 
     private Node<Item> first;   //top stack
     private int n;              //size of a stack
@@ -23,7 +25,7 @@ public class LinkedListStackOfGenericItemsImpl<Item> implements StackOfGenericIt
 
 
     /** constuctor **/
-    public LinkedListStackOfGenericItemsImpl() {
+    public LinkedListStackImpl() {
         first = null;
         n = 0;
     }
