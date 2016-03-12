@@ -9,22 +9,22 @@ import lection2.stacks.interfaces.StackOfGenericItems;
  */
 public class SimpleArrayImpl<Item> implements StackOfGenericItems<Item> {
 
-    private Item[] s;
+    private Item[] a;
     private int n = 0;
 
-    public SimpleArrayImpl(Item[] withCapacity) {
-        this.s = withCapacity;
+    public SimpleArrayImpl(int capacity) {
+        this.a = (Item[]) new Object[capacity];
     }
 
 
     @Override
     public void push(Item item) {
-       s[n++] = item;
+       a[n++] = item;
     }
 
     @Override
     public Item pop() {
-        return s[--n];
+        return a[--n];
     }
 
     @Override
