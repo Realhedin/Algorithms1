@@ -2,6 +2,7 @@ package lection2.queue.impl;
 
 import lection2.queue.interfaces.QueueOfGenericItems;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -9,7 +10,7 @@ import java.util.NoSuchElementException;
  *
  * Created by dkorolev on 3/13/2016.
  */
-public class LinkedListQueueImpl<Item> implements QueueOfGenericItems<Item> {
+public class LinkedListQueueImpl<Item> implements QueueOfGenericItems<Item>, Iterable<Item> {
     private Node<Item> first;           //link to the first one
     private Node<Item> last;            //link to the last one
     private int n;                      //number of elements in queue.
@@ -67,5 +68,31 @@ public class LinkedListQueueImpl<Item> implements QueueOfGenericItems<Item> {
     @Override
     public int size() {
         return n;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<Item> {
+
+        private Node<Item> current;
+
+        public LinkedListIterator() {
+            current = first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
     }
 }

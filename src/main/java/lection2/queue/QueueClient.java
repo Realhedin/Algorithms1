@@ -1,7 +1,6 @@
 package lection2.queue;
 
 import lection2.queue.impl.ResizingArrayQueueImpl;
-import lection2.queue.interfaces.QueueOfGenericItems;
 
 /**
  * Queue test client.
@@ -16,7 +15,11 @@ public class QueueClient {
 
 //        QueueOfGenericItems<String> queue = new LinkedListQueueImpl<>();
 
-        QueueOfGenericItems<String> queue = new ResizingArrayQueueImpl<>();
+//        QueueOfGenericItems<String> queue = new ResizingArrayQueueImpl<>();
+
+//        LinkedListQueueImpl<String> queue = new LinkedListQueueImpl<>();
+
+        ResizingArrayQueueImpl<String> queue = new ResizingArrayQueueImpl<>();
 
         for (String arg : args) {
             if (arg.equals("-")) {
@@ -24,6 +27,12 @@ public class QueueClient {
             } else {
                 queue.enqueue(arg);
             }
+        }
+
+        //after iterator implementation
+        System.out.println();
+        for (String s : queue) {
+            System.out.println(s);
         }
     }
 }

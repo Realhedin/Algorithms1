@@ -2,6 +2,7 @@ package lection2.queue.impl;
 
 import lection2.queue.interfaces.QueueOfGenericItems;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -9,7 +10,7 @@ import java.util.NoSuchElementException;
  *
  * Created by dkorolev on 3/13/2016.
  */
-public class ResizingArrayQueueImpl<Item> implements QueueOfGenericItems<Item> {
+public class ResizingArrayQueueImpl<Item> implements QueueOfGenericItems<Item>, Iterable<Item> {
 
     private Item[] a;   //array
     private int n;      //size
@@ -44,6 +45,7 @@ public class ResizingArrayQueueImpl<Item> implements QueueOfGenericItems<Item> {
             resize(a.length * 2);
         }
         a[last++] = item;
+        if (last == a.length) last = 0;          // wrap-around
         n++;
     }
 
@@ -56,6 +58,7 @@ public class ResizingArrayQueueImpl<Item> implements QueueOfGenericItems<Item> {
         a[first] = null;
         n--;
         first++;
+        if (first == a.length) first = 0;           // wrap-around
         if (n > 0 && n == a.length / 4) {
             resize(a.length/2);
         }
@@ -70,5 +73,27 @@ public class ResizingArrayQueueImpl<Item> implements QueueOfGenericItems<Item> {
     @Override
     public int size() {
         return n;
+    }
+
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new ResizingArrayIterator();
+    }
+
+    private class ResizingArrayIterator implements Iterator<Item> {
+        private int i = 0;
+
+        @Override
+        public boolean hasNext() {
+            return i < n;
+        }
+
+        @Override
+        public Item next() {
+            Item item = a[(i + first) % a.length];
+            i++;
+            return item;
+        }
     }
 }
