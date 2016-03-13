@@ -1,6 +1,6 @@
 package lection2.stacks;
 
-import lection2.stacks.impl.SimpleArrayImpl;
+import lection2.stacks.impl.ResizingArrayImpl;
 import lection2.stacks.interfaces.StackOfGenericItems;
 
 /**
@@ -15,7 +15,9 @@ public class StackClient {
     public static void main(String[] args) {
 //        StackOfGenericItems<String> stack = new LinkedListStackImpl<>();
 
-        StackOfGenericItems<String> stack = new SimpleArrayImpl<>(5);
+//        StackOfGenericItems<String> stack = new SimpleArrayImpl<>(5);
+
+        StackOfGenericItems<String> stack = new ResizingArrayImpl<>();
 
         for (String arg : args) {
             if (arg.equals("-")) {
