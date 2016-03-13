@@ -32,13 +32,19 @@ public class ResizingArrayImpl<Item> implements StackOfGenericItems<Item> {
      */
     private void resize(int capacity) {
         Item[] newCopy = (Item[]) new Object[capacity];
-        System.arraycopy(a,0,newCopy,0,a.length);
+        System.arraycopy(a,0,newCopy,0,n);
         a = newCopy;
     }
 
     @Override
     public Item pop() {
-        return a[--n];
+        Item item = a[--n]; //better approach to allow GC
+        a[n] = null;        ///to reclaim memory.
+        //if array is 1/4 full, then halve size.
+        if (n > 0 && n == a.length / 4) {
+            resize(a.length/2);
+        }
+        return item;
     }
 
     @Override
