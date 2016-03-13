@@ -1,6 +1,6 @@
 package lection2.queue;
 
-import lection2.queue.impl.LinkedListQueueImpl;
+import lection2.queue.impl.ResizingArrayQueueImpl;
 import lection2.queue.interfaces.QueueOfGenericItems;
 
 /**
@@ -14,7 +14,9 @@ public class QueueClient {
 
     public static void main(String[] args) {
 
-        QueueOfGenericItems<String> queue = new LinkedListQueueImpl<>();
+//        QueueOfGenericItems<String> queue = new LinkedListQueueImpl<>();
+
+        QueueOfGenericItems<String> queue = new ResizingArrayQueueImpl<>();
 
         for (String arg : args) {
             if (arg.equals("-")) {
