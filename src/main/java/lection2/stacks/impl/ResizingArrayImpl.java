@@ -2,12 +2,14 @@ package lection2.stacks.impl;
 
 import lection2.stacks.interfaces.StackOfGenericItems;
 
+import java.util.Iterator;
+
 /**
  * Resizing array stack implementation.
  *
  * Created by dkorolev on 3/13/2016.
  */
-public class ResizingArrayImpl<Item> implements StackOfGenericItems<Item> {
+public class ResizingArrayImpl<Item> implements StackOfGenericItems<Item>, Iterable<Item> {
 
 
     private Item[] a;
@@ -55,5 +57,29 @@ public class ResizingArrayImpl<Item> implements StackOfGenericItems<Item> {
     @Override
     public int size() {
         return n;
+    }
+
+
+    /**
+     * iterator implementation.
+     * @return new ListIterator object.
+     */
+    public Iterator<Item> iterator() {
+        return new ReverseArrayIterator();
+    }
+
+    private class ReverseArrayIterator implements Iterator<Item> {
+
+        private int i = n;
+
+        @Override
+        public boolean hasNext() {
+            return i>0;
+        }
+
+        @Override
+        public Item next() {
+            return a[--i];
+        }
     }
 }
