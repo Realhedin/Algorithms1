@@ -5,6 +5,8 @@ import lection2.queue.interfaces.QueueOfGenericItems;
 import java.util.NoSuchElementException;
 
 /**
+ * Resizing array of queue implementation.
+ *
  * Created by dkorolev on 3/13/2016.
  */
 public class ResizingArrayQueueImpl<Item> implements QueueOfGenericItems<Item> {
