@@ -1,7 +1,8 @@
 package lection2.stacks;
 
-import lection2.stacks.impl.SimpleArrayImpl;
-import lection2.stacks.interfaces.StackOfGenericItems;
+import lection2.stacks.impl.ResizingArrayImpl;
+
+import java.util.Iterator;
 
 /**
  * Test client to check stack implementations.
@@ -15,7 +16,9 @@ public class StackClient {
     public static void main(String[] args) {
 //        StackOfGenericItems<String> stack = new LinkedListStackImpl<>();
 
-        StackOfGenericItems<String> stack = new SimpleArrayImpl<>(5);
+//        StackOfGenericItems<String> stack = new SimpleArrayImpl<>(5);
+
+        ResizingArrayImpl<String> stack = new ResizingArrayImpl<>();
 
         for (String arg : args) {
             if (arg.equals("-")) {
@@ -25,5 +28,19 @@ public class StackClient {
             }
         }
 
+
+        //After implemention iterators
+        //longhand version
+        System.out.println();
+        Iterator<String> iterator = stack.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        //shorthand version
+        System.out.println();
+        for (String s : stack) {
+            System.out.println(s);
+        }
     }
 }
